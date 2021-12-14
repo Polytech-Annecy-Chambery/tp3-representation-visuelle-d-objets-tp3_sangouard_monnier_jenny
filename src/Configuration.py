@@ -74,7 +74,8 @@ class Configuration:
 
         gl.glMatrixMode(gl.GL_MODELVIEW)
         gl.glLoadIdentity()
-        gl.glTranslatef(0.0,0.0, self.parameters['screenPosition'])       
+        gl.glTranslatef(0.0,0.0, self.parameters['screenPosition'])
+        gl.glRotatef(-90, 1, 0, 0)
         
     # Getter
     def getParameter(self, parameterKey):
@@ -146,14 +147,36 @@ class Configuration:
         elif self.event.dict['unicode'] == 'a' or self.event.key == pygame.K_a:
             self.parameters['axes'] = not self.parameters['axes']
             pygame.time.wait(300)
+            
+        #Page Up  et Page Down pour le zoom
+        elif self.event.key == pygame.K_PAGEUP:
+            gl.glScalef(1.1, 1.1, 1.1)
+            #self.parameters['screenPosition'] = self.parameters['screenPosition']*1.1
+            #self.initializeTransformationMatrix()
+        
+        elif self.event.key == pygame.K_PAGEDOWN:
+            gl.glScalef(1/1.1, 1/1.1, 1/1.1)
+            # self.parameters['screenPosition'] = self.parameters['screenPosition']/1.1
+            # self.initializeTransformationMatrix()
+            
     
     # Processes the MOUSEBUTTONDOWN event
     def processMouseButtonDownEvent(self):
-        pass
+        
+        #Zoom avec la molette de la souris (ne marche pas)
+        if self.event.button == 4 :
+            gl.glScalef(1.1, 1.1, 1.1)
+                
+        if self.event.button == 5 :
+            gl.glScalef(1/1.1, 1/1.1, 1/1.1)
+       
     
     # Processes the MOUSEMOTION event
     def processMouseMotionEvent(self):
-        pass
+        if pygame.mouse.get_pressed()[0] == 1 :
+            gl.glRotatef(5,  self.event.rel[1]/10, 0, self.event.rel[0]/10)
+        if pygame.mouse.get_pressed()[2] == 1 :
+            gl.glTranslatef(self.event.rel[0]/10, 0, self.event.rel[1]/10)
          
     # Displays on screen and processes events    
     def display(self): 
