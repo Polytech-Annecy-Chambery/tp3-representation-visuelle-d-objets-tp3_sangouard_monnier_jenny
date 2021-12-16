@@ -19,11 +19,10 @@ def Q1a():
     return Configuration()
     
 def Q1b_f():
-    return Configuration({'screenPosition': -2, 'xAxisColor': [1, 1, 0]}). \
-        setParameter('xAxisColor', [1, 1, 0]). \
-        setParameter('yAxisColor', [0,1,1]). \
-        setParameter('screenPosition', -10). \
-        display()
+    return Configuration({'screenPosition': -5, 'xAxisColor': [1, 1, 0]}). \
+    setParameter('xAxisColor', [1, 1, 0]). \
+    setParameter('yAxisColor', [0, 1, 1]). \
+    display()
         
 def Q2b():
     # Ecriture en utilisant le chaînage
@@ -95,9 +94,9 @@ def Q6():
 def main():
     # Enlever un des commentaires pour la question traitée
     
-    configuration = Q1a()
-    configuration = Q1b_f()
-    # configuration = Q2b()
+    # configuration = Q1a()
+    # configuration = Q1b_f()
+    configuration = Q2b()
     # configuration = Q2c()
     # configuration = Q3a()
     # configuration = Q4a()

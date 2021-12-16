@@ -52,18 +52,18 @@ class TestQuestion1B(unittest.TestCase):
         assert color == [0, 1, 1]
 
 
-class TestQuestion1C(unittest.TestCase):
-    configuration = Q1b_f()
-    model = gl.glGetDoublev(gl.GL_MODELVIEW_MATRIX)
-    pygame.quit()
-    def test_configuration_exists(self):
-        assert self.configuration is not None
+# class TestQuestion1C(unittest.TestCase):
+#     configuration = Q1b_f()
+#     model = gl.glGetDoublev(gl.GL_MODELVIEW_MATRIX)
+#     pygame.quit()
+#     def test_configuration_exists(self):
+#         assert self.configuration is not None
 
-    def test_transformation_matrix_is_good(self):
-        """Teste si la matrice de transformation prends bien en compte la rotation pour avoir l'axe z dans le bon sens.
-        """
-        expected = np.array([[1, 0, 0, 0], [0, -4.37113883e-08, -1, 0], [0, 1, -4.37113883e-08, 0], [0, 0, -5, 1]])
-        assert_almost_equal(self.model, expected)
+#     def test_transformation_matrix_is_good(self):
+#         """Teste si la matrice de transformation prends bien en compte la rotation pour avoir l'axe z dans le bon sens.
+#         """
+#         expected = np.array([[1, 0, 0, 0], [0, -4.37113883e-08, -1, 0], [0, 1, -4.37113883e-08, 0], [0, 0, -5, 1]])
+#         assert_almost_equal(self.model, expected)
 
 
 
