@@ -37,7 +37,10 @@ def Q2c():
             )
 
 def Q3a():
-    pass  
+    
+     return Configuration().add(
+              Wall({'position': [3, 1, 0], 'width':10, 'height':5})
+              )
 
 def Q4a():
     # Ecriture en utilisant des variables : A compléter
@@ -96,9 +99,9 @@ def main():
     
     # configuration = Q1a()
     # configuration = Q1b_f()
-    configuration = Q2b()
-    configuration = Q2c()
-    # configuration = Q3a()
+    # configuration = Q2b()
+    # configuration = Q2c()
+    configuration = Q3a()
     # configuration = Q4a()
     # configuration = Q5a()
     # configuration = Q5b()
