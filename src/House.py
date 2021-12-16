@@ -5,6 +5,7 @@ Created on Thu Nov 16 19:47:50 2017
 @author: lfoul
 """
 import OpenGL.GL as gl
+from Wall import Wall
 
 class House:
     # Constructor
@@ -42,4 +43,17 @@ class House:
     # Draws the house      
     def draw(self):  
         # A compléter en remplaçant pass par votre code
-        pass        
+        
+        gl.glPushMatrix()
+        
+        gl.glRotatef(self.parameters['orientation'], 0, 0, 1)
+        
+        for x in self.objects:   
+            Wall.draw(x)
+        
+        gl.glPopMatrix()
+        
+        
+        # Draws the objects if any
+        for x in self.objects:
+            x.draw()      

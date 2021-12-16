@@ -21,8 +21,7 @@ def Q1a():
 def Q1b_f():
     return Configuration({'screenPosition': -5, 'xAxisColor': [1, 1, 0]}). \
     setParameter('xAxisColor', [1, 1, 0]). \
-    setParameter('yAxisColor', [0, 1, 1]). \
-    display()
+    setParameter('yAxisColor', [0, 1, 1])
         
 def Q2b():
     # Ecriture en utilisant le chaînage
@@ -44,10 +43,10 @@ def Q3a():
 
 def Q4a():
     # Ecriture en utilisant des variables : A compléter
-    wall1 = Wall(...)
-    wall2 = Wall(...)
-    wall3 = Wall(...)
-    wall4 = Wall(...)  
+    wall1 = Wall({'position': [0, 0, 0], 'width':10, 'height':5,'thickness':0.3, 'color' : [1,0,1]})
+    wall2 = Wall({'position': [0, 6, 0], 'width':10, 'height':5,'thickness':0.3, 'color' : [1,0,0]})
+    wall3 = Wall({'position': [0.3, -0.3, 0], 'width':5.7, 'height':5,'thickness':0.3,'orientation': 90, 'color' : [0,1,0]})
+    wall4 = Wall({'position': [0.3, -10, 0], 'width':5.7, 'height':5,'thickness':0.3,'orientation': 90, 'color' : [0,0,1]})
     house = House({'position': [-3, 1, 0], 'orientation':0})
     house.add(wall1).add(wall3).add(wall4).add(wall2)
     return Configuration().add(house)   
@@ -101,10 +100,10 @@ def main():
     # configuration = Q1b_f()
     # configuration = Q2b()
     # configuration = Q2c()
-    configuration = Q3a()
+    # configuration = Q3a()
     # configuration = Q4a()
     # configuration = Q5a()
-    # configuration = Q5b()
+    configuration = Q5b()
     # configuration = Q5c1()
     # configuration = Q5c2() 
     # configuration = Q5d()

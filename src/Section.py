@@ -77,7 +77,18 @@ class Section:
     # Checks if the opening can be created for the object x
     def canCreateOpening(self, x):
         # A compléter en remplaçant pass par votre code
-        pass      
+        resultat = False
+        
+        if self.parameters['position'] <= x.parameters['position']\
+        and (self.parameters['position'][0] + self.parameters['width']) >= x.parameters['position'][0] \
+        and (x.parameters['height'] + x.parameters['position'][2]) < self.parameters['height']\
+        and x.parameters['width'] < (self.parameters['width'] - x.parameters['position'][0])\
+        and x.parameters['thickness']==self.parameters['thickness'] :
+            resultat = True
+            
+        return resultat
+        
+            
         
     # Creates the new sections for the object x
     def createNewSections(self, x):
@@ -153,7 +164,7 @@ class Section:
         for face in self.faces :
             gl.glPolygonMode(gl.GL_FRONT_AND_BACK, gl.GL_FILL) # on trace les faces : GL_FILL
             gl.glBegin(gl.GL_QUADS) # Tracé d’un quadrilatère
-            gl.glColor3fv([0.5, 0.5, 0.5]) # Couleur gris moyen
+            gl.glColor3fv([self.parameters['color']]) 
             
             #Exemple d'une face
             # gl.glVertex3fv([0, 0, 0])
