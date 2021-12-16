@@ -87,23 +87,68 @@ class Section:
     # Draws the edges
     def drawEdges(self):
         # A compléter en remplaçant pass par votre code
-        pass
-    
-    
-    # Adds an object to the object list
-    def add(self, x):
-        self.objects.append(x)
-        return self
-     
-    # Draws the faces
-    def draw(self):
-        
+      
         gl.glPushMatrix()
         
         gl.glTranslatef(self.parameters['position'][0],self.parameters['position'][1],self.parameters['position'][2])
         gl.glRotatef(self.parameters['orientation'], 0, 0, 1)
     
-        # self.generate() 
+        
+        gl.glPolygonMode(gl.GL_FRONT_AND_BACK,gl.GL_LINE) # on trace les faces : GL_FILL
+        gl.glBegin(gl.GL_LINES) # Tracé d’une ligne
+        gl.glColor3fv([0, 0, 0])
+        
+        gl.glVertex3fv(self.vertices[0])
+        gl.glVertex3fv(self.vertices[1])
+        
+        gl.glVertex3fv(self.vertices[0])
+        gl.glVertex3fv(self.vertices[2])
+            
+        gl.glVertex3fv(self.vertices[2])
+        gl.glVertex3fv(self.vertices[3])
+            
+        gl.glVertex3fv(self.vertices[1])
+        gl.glVertex3fv(self.vertices[3])
+            
+        gl.glVertex3fv(self.vertices[1])
+        gl.glVertex3fv(self.vertices[4])
+            
+        gl.glVertex3fv(self.vertices[0])
+        gl.glVertex3fv(self.vertices[5])
+            
+        gl.glVertex3fv(self.vertices[3])
+        gl.glVertex3fv(self.vertices[6])
+            
+        gl.glVertex3fv(self.vertices[2])
+        gl.glVertex3fv(self.vertices[7])
+            
+        gl.glVertex3fv(self.vertices[4])
+        gl.glVertex3fv(self.vertices[5])
+            
+        gl.glVertex3fv(self.vertices[4])
+        gl.glVertex3fv(self.vertices[6])
+            
+        gl.glVertex3fv(self.vertices[6])
+        gl.glVertex3fv(self.vertices[7])
+            
+        gl.glVertex3fv(self.vertices[5])
+        gl.glVertex3fv(self.vertices[7])
+        
+        gl.glEnd()
+            
+        gl.glPopMatrix()
+     
+    # Draws the faces
+    def draw(self):
+        
+        if self.parameters['edges'] == True:
+            self.drawEdges()
+            
+        gl.glPushMatrix()
+        
+        gl.glTranslatef(self.parameters['position'][0],self.parameters['position'][1],self.parameters['position'][2])
+        gl.glRotatef(self.parameters['orientation'], 0, 0, 1)
+    
         
         for face in self.faces :
             gl.glPolygonMode(gl.GL_FRONT_AND_BACK, gl.GL_FILL) # on trace les faces : GL_FILL
@@ -125,6 +170,3 @@ class Section:
             
         gl.glPopMatrix()
         
-        # Draws the objects if any
-        for x in self.objects:
-            x.draw()
